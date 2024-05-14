@@ -132,6 +132,8 @@ class CustomLLM(LLM):
             streamer=self.streamer,
             pad_token_id=tokenizer.eos_token_id
         )
+
+        # start the generation in thread since it is time consuming
         thread = Thread(target=model.generate, kwargs=kwargs)
         thread.start()
 
@@ -215,11 +217,11 @@ if prompt := st.chat_input("What would you like to ask the captain?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     # Display chatbot response in chat message container
-    with st.chat_message("assistant"):
+    with st.chat_message("Captain Picard"):
         # take message history and add it as context in the prompt
         context_string = "Context:\n"
         for message in st.session_state.messages:
-            context_string += message['content'] + "\n"
+            context_string += message['role'] + ": " + message['content'] + "\n"
         
         # use PGVector to find lines in the database similar to the user input and add it to the context as well
         docs_with_score = store.similarity_search_with_score(prompt)
@@ -231,4 +233,4 @@ if prompt := st.chat_input("What would you like to ask the captain?"):
         response = st.write_stream(socket_chain.stream(input=dict({"context": context_string, "prompt": prompt})))
     
     # Add chatbot response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append({"role": "Captain Picard", "content": response})
