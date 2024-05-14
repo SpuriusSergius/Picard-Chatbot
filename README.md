@@ -28,13 +28,13 @@ Langchain inherently supports some LLMs like OpenAI's ChatGPT but it also lets u
 
 Here is a picture of the results:
 
-![Screenshot of the chatbot](Images\Screenshot1.png)
+![Screenshot of the chatbot](Images/Screenshot1.png)
 
 The chatbot responds like it is Captain Picard and introduces itself as him. It also references the iconic Star Trek mission statement "to explore new worlds, seek out new life and new civilizations, and to boldly go where no one has gone before." Further, the response to the second prompt highlights that the model remembers the history of the conversation, referencing the fact it has already stated Picard's mission.
 
 Below is the bot answer further questions. Note how the bot responds like it is Captain Picard.
 
-![Another screenshot of the chatbot](Images\Screenshot2.png)
+![Another screenshot of the chatbot](Images/Screenshot2.png)
 
 To see the chatbot in action, I have provided a [video demo](https://youtu.be/qF-C36PzMSY). The chatbot is slow to respond because I am running the model on my CPU.
 
